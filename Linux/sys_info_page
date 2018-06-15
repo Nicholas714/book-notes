@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Program to output a system information page
+
+TITLE="System Information Report For $HOSTNAME"
+CURRENT_TIME=$(date)
+TIME_STAMP="Generated $CURRENT_TIME, by $USER"
+
+# d=$(ls -l ~/Desktop) <-- assigns d to the ls of desktop
+# cp $TITLE ${TITLE}.txt <-- to tell bash that it is just the TITLE variable and not the TITLE.txt variable
+
+cat << _EOF_
+<HTML>
+ <HEAD>
+	<TITLE>$TITLE</TITLE>
+  <HEAD>
+  <BODY>
+	<H1>$TITLE</H1>
+	<P>$TIME_STAMP</P>
+  <BODY>
+</HTML>
+_EOF_

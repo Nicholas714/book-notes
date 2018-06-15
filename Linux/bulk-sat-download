@@ -1,0 +1,26 @@
+q#!/bin/bash
+
+# This script will download all SAT practice tests and answer keys
+
+OUTPUT_DIR=~/Desktop/SAT
+AGENT="Mozilla/5.0 (Windows NT 5.2; rv:2.0.1) Gecko/20100101 Firefox/4.0.1"
+ROOT_DIR="https://collegereadiness.collegeboard.org/pdf/"
+BASE_LINK="${ROOT_DIR}sat-practice-"
+
+mkdir ${OUTPUT_DIR}
+
+for i in `seq 1 10`;
+do
+   mkdir ${OUTPUT_DIR}/Test-${i}/
+   test_link="${BASE_LINK}test-${i}"
+   essay_link="${test_link}-essay"
+   answers_link="${test_link}-answers"
+   answersheet_link="${BASE_LINK}answer-sheet"
+   scoring_link="${ROOT_DIR}scoring-sat-practice-test-${i}"
+   wget  --user-agent=$AGENT -l1 --no-parent -A.pdf ${test_link}.pdf -O ${OUTPUT_DIR}/Test-${i}/Test-Booklet.pdf
+   wget  --user-agent=$AGENT -l1 --no-parent -A.pdf ${essay_link}.pdf -O ${OUTPUT_DIR}/Test-${i}/Essay.pdf
+   wget  --user-agent=$AGENT -l1 --no-parent -A.pdf ${answers_link}.pdf -O ${OUTPUT_DIR}/Test-${i}/Answers.pdf
+   wget  --user-agent=$AGENT -l1 --no-parent -A.pdf ${answersheet_link}.pdf -O ${OUTPUT_DIR}/Test-${i}/Answer-Sheet.pdf
+   wget  --user-agent=$AGENT -l1 --no-parent -A.pdf ${scoring_link}.pdf -O "${OUTPUT_DIR}/Test-${i}/Scoring.pdf"
+done
+

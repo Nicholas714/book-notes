@@ -1,0 +1,47 @@
+#!/bin/bash
+
+# status code: # from 0 to 255 to indicate status where 0 is successful 
+# for an if to be true, it must return 0 as success so it can be used with commands like test
+
+# three ways to test: test, [[]], (())
+# example: [ 1 -eq 1 ], [[ 1 == 1 ]], (( 1 == 1 ))
+
+x=5
+
+if [ $x = 5 ]; then
+	echo "x equals 5."
+else
+	echo "x does not equal 5."
+fi
+
+if [ 1 -eq 1 ]; then
+	echo "1 = 1"
+fi
+
+# tests the status of a file
+FILE=~/.bash_profile
+
+if [ -e "$FILE" ]; then
+	if [ -f "$FILE" ]; then
+		echo "$FILE is a regular file."
+	fi
+	if [ -d "$FILE" ]; then
+		echo "$FILE is a directory."
+	fi
+	if [ -r "$FILE" ]; then
+		echo "$FILE is readable."
+	fi
+	if [ -w "$FILE" ]; then
+		echo "$FILE is writeable."
+	fi
+	if [ -x "$FILE" ]; then
+		echo "$FILE is executable."
+	fi
+else
+	echo "$FILE does not exist."
+	exit 1
+fi
+
+exit 
+
+
