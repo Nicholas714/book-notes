@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct Card {
+struct Card: Hashable {
     
     var isFaceUp = false
     var isMatched = false
-    var identifier: Int 
+    var hashValue: Int
     
     private static var identifierFactory = 0
     
@@ -22,7 +22,7 @@ struct Card {
     }
     
     init() {
-        identifier = Card.getUniqueIdentifier()
+        hashValue = Card.getUniqueIdentifier()
     }
     
 }
