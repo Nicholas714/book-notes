@@ -16,3 +16,4 @@
 * UICollectionViewDelegate only has optional methods so it does not need to inherit NSObject
 * Extensions are used to add protocol support and separate
 * Equatable is template pattern, as == must be required to run index(of: Element)
+* Scrolling up and down will end up in re-downloading, so images must be cached 
